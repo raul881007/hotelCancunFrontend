@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Room # {{room.number}}</h2>
+<p>{{room.description}}</p>
+<mat-form-field appearance="fill">
+  <mat-label>Client name</mat-label>
+  <div [formGroup]="range">
+    <input matInput  formControlName= "client">       
+  </div>
+  
+  
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input  [formGroup]="range" [rangePicker]="picker" >
+      <input matStartDate formControlName="start" placeholder="Start date" (dateChange)="onChangeDate()" >
+      <input matEndDate formControlName="end" placeholder="End date" (dateChange)="onChangeDate()">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <mat-error *ngIf=showError>{{errorMessage}}</mat-error>
+ 
+  <mat-dialog-actions align="end">
+    <button mat-button  mat-dialog-close >Cancel</button>
+    <button *ngIf=updatingReservation mat-raised-button color="warn" [mat-dialog-close]=1 >Delete</button>
+    <button mat-raised-button *ngIf=updatingReservation color="primary"  (click)="createUpdateReservation()" cdkFocusInitial>Update</button>
+    <button mat-raised-button *ngIf=!updatingReservation color="primary" [mat-dialog-close]=2 (click)="createUpdateReservation()" cdkFocusInitial>Reserve</button>
+  </mat-dialog-actions>
+  

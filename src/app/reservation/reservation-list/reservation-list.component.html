@@ -1,0 +1,25 @@
+
+
+
+<mat-grid-list cols="2" rowHeight="2:2">
+  <mat-grid-tile *ngFor="let reservation of reservations index as i">
+    <mat-card class="card">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>Room # {{reservation.room.number}}</mat-card-title>
+        <mat-card-subtitle>Reservation periode {{reservation.initialDate}} - {{reservation.endDate}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://www.flamingocancun.com/cache/95/81/9581894cc81b7b128b96a8a343b9f178.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+        Client: {{reservation.client}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" (click)="showUpdateReservation(reservation)">Update</button>
+        <button mat-raised-button color="warn" (click)="deleteReservation(reservation)">Delete</button>
+      </mat-card-actions>
+    </mat-card> 
+  </mat-grid-tile>
+</mat-grid-list>
+

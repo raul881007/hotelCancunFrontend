@@ -1,0 +1,8 @@
+  .header-image {
+    background-image: url('https://www.flamingocancun.com/cache/95/81/9581894cc81b7b128b96a8a343b9f178.jpg');
+    background-size: cover;
+  }
+
+.card {
+  max-width: 400px;
+}
